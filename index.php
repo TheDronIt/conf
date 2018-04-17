@@ -5,71 +5,8 @@
 <link rel="stylesheet" href="/style/normalize.css">
 <link rel="shortcut icon" href="img/icon.png" />
 <link rel="stylesheet" href="/style/slider-ltr.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-<script type="text/javascript">
-				document.addEventListener("DOMContentLoaded", function(event) { 
-					function escapeHtml(text) { var map = {'&': '&amp;','<': '&lt;','>': '&gt;','"': '&quot;',"'": '&#039;'}; return text.replace(/[&<>"']/g, function(m) { return map[m]; });}
-					function setCookie(name, value) { if (name && value) document.cookie = name + "=" + value;}
-					function getCookie(name) { var r = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)"); if (r) return r[2]; else return ''; }
-					function setInputValue(inputEl, value) { if (inputEl && value) { inputEl.value = value; inputEl.focus(); inputEl.blur(); } }
-					function getInputValue(inputEl){ if (inputEl && inputEl.value) return inputEl.value; else return ''; }
-					var reg_fio = document.getElementById('reg_fio');
-			        var reg_email = document.getElementById('reg_email');
-			        var reg_work = document.getElementById('reg_work');
-					var comment = document.getElementById('comment');
-					var reg_submit = document.getElementById('reg_submit');
-					var duplicate_message = document.getElementById('duplicate_message');
-					
-					var pattern = /^[a-z0-9][a-z0-9\._-]*[a-z0-9]*@([a-z0-9]+([a-z0-9-]*[a-z0-9]+)*\.)+[a-z]+/i; 
-			        reg_email.addEventListener("blur",function(){
-						var valid_email_message = document.getElementById('valid_email_message');
-			            if(reg_email.value != ''){			 
-			                if(reg_email.value.search(pattern) == 0){
-			                    valid_email_message.innerHTML = ''; 
-			                    reg_submit.disabled = false;
-			                }else{
-			                    valid_email_message.innerHTML = 'Проверьте Ваш email, пожалуйста, он не устраивает наше регулярное выражение';
-			                    reg_submit.disabled = true;
-			                }
-			            }else{
-			                valid_email_message.innerHTML = 'Введите Ваш email, пожалуйста, на него отправляется подтверждение регистрации';
-			            }
-			        });
-					function setDateTimeValue() {
-						var reg_datetime = document.getElementById('reg_datetime');
-						var today = new Date();
-						if (reg_datetime) reg_datetime.value = today.toISOString();
-					}
-					var didIt = false;
-					window.addEventListener("scroll", function(){
-						if (!didIt) {
-							var scrollToElem = reg_fio.offsetTop - 0.8*this.innerHeight;
-							var winScrollTop = this.scrollY 
-							if(winScrollTop > scrollToElem){
-								setInputValue(reg_fio, escapeHtml(decodeURIComponent(getCookie(reg_fio.id).replace(/\+/g,' ')))); 
-								setInputValue(reg_email, decodeURIComponent(escapeHtml(getCookie(reg_email.id)))); //.replace('%40','@')
-								setInputValue(reg_work, decodeURIComponent(escapeHtml(getCookie(reg_work.id).replace(/\+/g,' '))));
-								setInputValue(comment, decodeURIComponent(escapeHtml(getCookie(comment.id).replace(/\+/g,' '))));
-								didIt = true;
-								setDateTimeValue();
-					}	}	});
-					
-
-					
-					var submitCount = Math.ceil(getCookie('reg_submit_count'));
-					if (submitCount>0) {
-						reg_submit.value = 'Повторно отправить';
-						var reg_datetime_cookie = getCookie('reg_datetime');
-						if (reg_datetime_cookie && duplicate_message) duplicate_message.innerHTML = 'Напоминаем, Вы уже отправляли заявку '.concat((new Date(decodeURIComponent(reg_datetime_cookie))).toLocaleString(), ', желаете отправить повторно?');
-					}
-					
-					reg_submit.addEventListener("click", function(){
-						if (duplicate_message) duplicate_message.innerHTML = "Ваш запрос обрабатывается, пожалуйста подождите 🙄";
-						setDateTimeValue();
-			        }, true); // нам бы в самом начале погружения в клик =)
-				});
-				
-	        </script>
 </head>
 <body>
  
@@ -92,12 +29,14 @@
 				<div class= "intro"><!--КНОПКА-->
 					<div class= "intro_cent">
 						<div>
-							<p><a href="#start"><div class="cod intro_but"></div>
-								<div class="animate2">
-									<img class="first" src="img/play2.png" width=100 height=100 />					
-									<img class="second" src="img/play.png" width=100 height=100/>
-								</div>
-							</a></p>
+							<nav id= "go">
+								<p><a href="#start"><div class="cod intro_but"></div>
+									<div class="animate2">
+										<img class="first" src="img/play2.png" width=100 height=100 />					
+										<img class="second" src="img/play.png" width=100 height=100/>
+									</div>
+								</a></p>
+							</nav>
 						</div>
 					</div>
 				</div>
@@ -113,12 +52,14 @@
 				<div class= "intro"><!--КНОПКА-->
 					<div class= "intro_cent">
 						<div>
-							<p><a href="#start"><div class="cod intro_but"></div>
-								<div class="animate2">
-									<img class="first" src="img/play2.png" width=100 height=100 />					
-									<img class="second" src="img/play.png" width=100 height=100/>
-								</div>
-							</a></p>
+							<nav id= "go3">
+								<p><a href="#start"><div class="cod intro_but"></div>
+									<div class="animate2">
+										<img class="first" src="img/play2.png" width=100 height=100 />					
+										<img class="second" src="img/play.png" width=100 height=100/>
+									</div>
+								</a></p>
+							</nav>
 						</div>
 					</div>
 				</div>
@@ -134,12 +75,14 @@
 				<div class= "intro"><!--КНОПКА-->
 					<div class= "intro_cent">
 						<div>
-							<p><a href="#start"><div class="cod intro_but"></div>
-								<div class="animate2">
-									<img class="first" src="img/play2.png" width=100 height=100 />					
-									<img class="second" src="img/play.png" width=100 height=100/>
-								</div>
-							</a></p>
+							<nav id= "go2">
+								<p><a href="#start"><div class="cod intro_but"></div>
+									<div class="animate2">
+										<img class="first" src="img/play2.png" width=100 height=100 />					
+										<img class="second" src="img/play.png" width=100 height=100/>
+									</div>
+								</a></p>
+							</nav>
 						</div>
 					</div>
 				</div>          
@@ -155,12 +98,14 @@
 				<div class= "intro"><!--КНОПКА-->
 					<div class= "intro_cent">
 						<div>
-							<p><a href="#start"><div class="cod intro_but"></div>
-								<div class="animate2">
-									<img class="first" src="img/play2.png" width=100 height=100 />					
-									<img class="second" src="img/play.png" width=100 height=100/>
-								</div>
-							</a></p>
+							<nav id= "go1">
+								<p><a href="#start"><div class="cod intro_but"></div>
+									<div class="animate2">
+										<img class="first" src="img/play2.png" width=100 height=100 />					
+										<img class="second" src="img/play.png" width=100 height=100/>
+									</div>
+								</a></p>
+							</nav>
 						</div>
 					</div>
 				</div>
@@ -183,7 +128,7 @@
       </div>
     </div>
 
-
+<div id ="start"> 
   <header class="page-header" id="header">
       <div class="page-header__inner">
 		<!-- /page-header-top -->
@@ -201,7 +146,7 @@
       </div><!-- /page-header__inner -->	  
   </header>
     <br> 
-  
+
   <ul class="content-cards page-content__content-cards">
 			<li class="content-cards-item  page-content__cards-item"> <!------ 1 БЛОК ----->
                 <img class="content-cards-item__cover" src="/img/phot.jpg" width="480" alt="">
@@ -316,8 +261,9 @@
                 <div class="content-cards-item__description">Описание</div>
 				</li><!-- /content-cards__item -->
         </ul>
-		
+	</div>	
 		<!-- РЕГИСТРАЦИЯ -->
+	<nav id= "reg">
 		<section class="registration content-section" id="registration">
 			<div class="registration_inner mobile_inner">
 				<h2>Регистрация на мероприятие<!--, <a href="javascript:cal.download()">добавить в календарь 📌</a>--></h2>
@@ -340,11 +286,10 @@
 					<textarea id="message" class="registration-form__fio mid-pos" rows="3" name="comment" placeholder="Пожелание"></textarea>
 					<text class="fio">Пожелание</text>
 				</div><br>
-					<button type="submit" name="submit" class="registration-form__fio ">Отправить заявку </button>
-                                        
-			
-			</div>
+					<button type="submit" name="submit" class="registration-form__fio ">Отправить заявку </button>                                     		
+			</div>			
 		</section>
+	</nav>
 		<br>
 		
 		<!-- ПОДВАЛ -->
@@ -354,6 +299,7 @@
 			<p>
 				<a href="https://vk.com/initblog" target="_blank"><img src="img/icon/vk.png" alt="VK"></a>
 				<a href="https://t.me/poib_rf" target="_blank"><img src="img/icon/telegram.png" alt="VK"></a>
+				<a href="https://github.com/TheDronIt" target="_blank"><img src="img/icon/git.png" alt="VK"></a>
 			</p>
 			Группа по ИБ для специалистов в Хабаровске, 2018
 		</span>
@@ -361,7 +307,8 @@
       </div><!-- /page-footer__inner -->
   </footer>
   
-  <script src="script.js"></script>
-  
+	<script src="js/script.js"></script>
+	
+	<a href="#" class="scrollup">Наверх</a>
 </body>
 </html>
